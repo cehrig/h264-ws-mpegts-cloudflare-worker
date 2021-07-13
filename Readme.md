@@ -48,6 +48,7 @@ It is
 Here is a high-level overview what the Cloudflare Worker is doing
 - read websocket messages
 - search for 3 consecutive SPS NAL units (we are creating 3 seconds segments) & push to the Muxer
+
 For each 3 seconds segment
 - add Transport Stream Header
 - add Program Association Table (PAT)
@@ -63,9 +64,9 @@ We also need a playlist, so the Worker is providing an endpoint for loading the 
 3 latest segments.
 
 # References
-HLS is described in RFC8216
-MPEG-2 Transport Streams are used as Media Segments
-MPEG Transport Streams are described in ISO/IEC 13818-1:2000
+- HLS is described in RFC8216 (MPEG-2 Transport Streams are used as Media Segments)
+- MPEG Transport Streams are described in ISO/IEC 13818-1:2000
+
 
 # Optional Slack logging
 ```
