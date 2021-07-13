@@ -62,7 +62,10 @@ Finally
 We also need a playlist, so the Worker is providing an endpoint for loading the HLS Playlist including references to the
 3 latest segments.
 
-
+# References
+HLS is described in RFC8216
+MPEG-2 Transport Streams are used as Media Segments
+MPEG Transport Streams are described in ISO/IEC 13818-1:2000
 
 # Optional Slack logging
 ```
