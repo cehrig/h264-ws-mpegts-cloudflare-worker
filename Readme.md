@@ -1,4 +1,4 @@
-# MPEG Transport Stream Multiplexer running in Cloudflare Workers 
+# JS MPEG Transport Stream Multiplexer running in Cloudflare Workers 
 
 This is a lab setup for demonstrating how we can leverage Cloudflare Workers (Durable Objects) to multiplex HLS Segments / an MPEG 
 Transport stream in real-time, given a raw raspivid h264 bitstream sent to it via Websockets.
@@ -45,7 +45,23 @@ It is
 - pull a handful of NAL units from the ringbuffer and send them to the Durable Object
 
 # 3. The Cloudflare Worker
-The Durable Object actually is
+Here is a high-level overview what the Cloudflare Worker is doing
+- read websocket messages
+- search for 3 consecutive SPS NAL units (we are creating 3 seconds segments) & push to the Muxer
+For each 3 seconds segment
+- add Transport Stream Header
+- add Program Association Table (PAT)
+- add Program Map Table (PMT)
+- add Adaptation field
+- add Packetized Elementary Stream (PES) Header
+- calculate program clock reference (PCR) and presentation timestamps (PTS)
+
+Finally
+- write MPEG-TS segment into Cloudflare Cache
+
+We also need a playlist, so the Worker is providing an endpoint for loading the HLS Playlist including references to the
+3 latest segments.
+
 
 
 # Optional Slack logging
