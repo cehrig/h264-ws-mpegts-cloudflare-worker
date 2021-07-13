@@ -1,4 +1,6 @@
-This is a lab setup for demonstrating how we can use a Cloudflare Worker (Durable Object) to multiplex HLS Segments / an MPEG 
+# MPEG Transport Stream Multiplexer running in Cloudflare Workers 
+
+This is a lab setup for demonstrating how we can leverage Cloudflare Workers (Durable Objects) to multiplex HLS Segments / an MPEG 
 Transport stream in real-time, given a raw raspivid h264 bitstream sent to it via Websockets.
 
 The Durable Object is a very opinionated MPEG Transport Stream multiplexer that is only tested using the options mentioned below. 
@@ -9,7 +11,7 @@ It is creating segments and the required playlist on-the-fly.
 H264 bitstream -> Ringbuffer -> Websocket -> Cloudflare Durable Object -> HLS Segments -> Play
 ```
 
-![Alt Text](doc/demo.gif)
+![Alt Text](doc/screen.gif)
 
 # 1. Raspivid settings
 There is a whole range of requirements for the h264 bitstream, since this is not a rebuild of ffmpeg. The raspivid command that has been used:
