@@ -1,0 +1,18 @@
+name = "h264-ws-hls"
+# type = "javascript" is required to use the `[build]` section
+type = "javascript"
+workers_dev = true
+account_id = "<account ID>"
+route = ""
+zone_id = ""
+vars = { HOSTNAME = "<the Worker hostname>" }
+
+[build]
+command = "npm install && npm run build"
+[build.upload]
+# The "modules" upload format is required for all projects that export a Durable Objects class
+format = "modules"
+main = "./shim.mjs"
+
+[durable_objects]
+bindings = [{name = "NALHandler", class_name = "NALHandler"}]

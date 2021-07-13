@@ -1,0 +1,15 @@
+test.js
+main
+
+h264-worker/package-lock.json
+h264-worker/dist
+h264-worker/node_modules
+h264-worker/wrangler.toml
+h264-worker/.cargo*
+
+debug/
+test_videos/
+cmake-build-debug/
+.gradle/
+.idea/
+src/*.o
